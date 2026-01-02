@@ -43,9 +43,11 @@ Early implementations of $\varphi_n^p$ can be found in the `python-implementatio
 
 ### $\varphi_n^{*iso}$: Bouncing Back From a Failed Conjecture
 One of the first drafts for a heuristic for testing isotropy has been illustrated in the second presentation of the `persentations` folder. This early version relied on the conjecture, that full isotropy of the ACF is preserved in the spectral representation, meaning that:
+
 $$
 C(\|h\|_2) = c\quad \forall h\in \mathbb Z^2 \Longleftrightarrow  f(\|\omega\|_2) = \tilde c \quad \forall \omega\in [-\pi,\pi]^2
 $$
+
 Which would justify permuting periodogram ordiantes at Fourier frequency pairs with equal $L_2$ norms. While being an intuitive and to be expected result, this conjecture turned out to be false, being easily disproven by a counterexample. 
 
 In light of this, I adapted the isotropy hypothesis to a weaker varaint that was preserved in the spectrum and simplified the evaluation of the integral to be more in line with the original approach. 
