@@ -1,0 +1,250 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{ceesayebra_hdbscan}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e4013b548887bfc5e89e6fa07ffdfd0f}{%
+           family={Ceesayebra},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{fullhash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{fullhashraw}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{bibnamehash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{authorbibnamehash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{authornamehash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{authorfullhash}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \strng{authorfullhashraw}{e4013b548887bfc5e89e6fa07ffdfd0f}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://medium.com/@ceesayebra/definition-of-hdbscan-e6cc0d076633}}
+      \field{note}{Accessed: 2025-09-11}
+      \field{title}{Definition of HDBSCAN}
+      \field{year}{2019}
+    \endentry
+    \entry{Chogan2022}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=21f7f763357003310be0b870cd382fe9}{%
+           family={Chogan},
+           familyi={C\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{fullhash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{fullhashraw}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{bibnamehash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{authorbibnamehash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{authornamehash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{authorfullhash}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \strng{authorfullhashraw}{80bb9a3d9c63e6585dd88c5aa54500cf}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Bioengineering and Biotechnology}
+      \field{title}{Skin Tissue Engineering Advances in Burns}
+      \field{volume}{10}
+      \field{year}{2022}
+      \field{pages}{PMC10233492}
+      \range{pages}{-1}
+      \verb{urlraw}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC10233492/
+      \endverb
+      \verb{url}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC10233492/
+      \endverb
+    \endentry
+    \entry{Lewis2021}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c49310d378d95c61915e86b6e4265869}{%
+           family={Lewis},
+           familyi={L\bibinitperiod},
+           given={H.\bibnamedelimi C.},
+           giveni={H\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{fullhash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{fullhashraw}{667092109ec208736ee1fd8f0cccb633}
+      \strng{bibnamehash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{authorbibnamehash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{authornamehash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{authorfullhash}{667092109ec208736ee1fd8f0cccb633}
+      \strng{authorfullhashraw}{667092109ec208736ee1fd8f0cccb633}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Transplantation}
+      \field{note}{Includes data on face, hand, and abdominal wall VCAs}
+      \field{title}{Vascularized Composite Allotransplantation in the United States: Overview of Upper Extremities, Face, Abdominal Wall, and Uterus Transplants}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.amjtransplant.org/article/S1600-6135(22)08338-1/pdf
+      \endverb
+      \verb{url}
+      \verb https://www.amjtransplant.org/article/S1600-6135(22)08338-1/pdf
+      \endverb
+    \endentry
+    \entry{ONeill2024}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=5eb5942d2220cd4a53a6f0ebbf79b861}{%
+           family={O’Neill},
+           familyi={O\bibinitperiod},
+           given={Kathleen},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b1afbd109d60841f05703922c62b131}{%
+           family={Richards},
+           familyi={R\bibinitperiod},
+           given={E.\bibnamedelimi G.},
+           giveni={E\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6fed37d3c1489d3e0c823dbffddc2075}{%
+           family={Walter},
+           familyi={W\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=520b283080499a146155e412dc28ee38}{%
+           family={West},
+           familyi={W\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8a45423d2849a59cd19145114894dfb2}{%
+           family={Hasz},
+           familyi={H\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=40a377a21a3c108d20e8fd4442c836cb}{%
+           family={Testa},
+           familyi={T\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3ba89117f7a8b13d6f655e16fdb73c7a}{%
+           family={Kalra},
+           familyi={K\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b5e15d8b0a21f16b8ba31e9894eff45}{%
+           family={Falcone},
+           familyi={F\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a1ec88a0ce2ecb12cc27753be4a269c6}{%
+           family={Flyckt},
+           familyi={F\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6b3faca4fc0c7e97e49ccf255d4ca88f}{%
+           family={Latif},
+           familyi={L\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6d796475449a6757f120d15da5eab8fb}
+      \strng{fullhash}{810fa86755edaa30953931e3fcbfd621}
+      \strng{fullhashraw}{810fa86755edaa30953931e3fcbfd621}
+      \strng{bibnamehash}{6d796475449a6757f120d15da5eab8fb}
+      \strng{authorbibnamehash}{6d796475449a6757f120d15da5eab8fb}
+      \strng{authornamehash}{6d796475449a6757f120d15da5eab8fb}
+      \strng{authorfullhash}{810fa86755edaa30953931e3fcbfd621}
+      \strng{authorfullhashraw}{810fa86755edaa30953931e3fcbfd621}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transplantology}
+      \field{number}{1}
+      \field{title}{Availability of Deceased Donors for Uterus Transplantation in the United States: Perception vs. Reality}
+      \field{volume}{5}
+      \field{year}{2024}
+      \field{pages}{27\bibrangedash 36}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.3390/transplantology5010003
+      \endverb
+    \endentry
+    \entry{ReviewWoundHealing2025}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ecee60e58c291a3ebef9110c3b9bfbd4}{%
+           family={Siu},
+           familyi={S\bibinitperiod},
+           given={W.\bibnamedelimi S.},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{fullhash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{fullhashraw}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{bibnamehash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{authorbibnamehash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{authornamehash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{authorfullhash}{1f53a199e34ddf27b10dfa55d2e11780}
+      \strng{authorfullhashraw}{1f53a199e34ddf27b10dfa55d2e11780}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Clinical Medicine}
+      \field{number}{4}
+      \field{title}{Review on Current Advancements in Facilitation of Burn Wound Recovery}
+      \field{volume}{12}
+      \field{year}{2025}
+      \field{pages}{428}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/jcm12040428
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

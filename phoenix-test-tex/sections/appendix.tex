@@ -1,0 +1,81 @@
+\appendix
+\pagenumbering{Roman}
+\section{Figures}
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=.7\linewidth]{./figures/boxp_Medical.png}
+  \caption{Boxplot of Group Medical}
+  \label{fig:boxp_med}
+\end{figure}
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=.7\linewidth]{./figures/boxp_Procedure.png}
+  \caption{Boxplot of Group Procedure}
+  \label{fig:boxp_proc}
+\end{figure}
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=.6\linewidth]{figures/linfit_Demographic_Female Cohort.png}
+  \caption{Linear Regression against true data: Female Cohort}
+  \label{fig:linfit_fem}
+\end{figure}
+
+\begin{figure}[h!]
+  \center
+  \includegraphics[width=.6\linewidth]{figures/linfit_Procedure_Face Transplants.png}
+  \caption{Linear Regression against true data: Face VCAs}
+  \label{fig:linfit_face}
+\end{figure}
+
+\begin{figure}
+  \center
+  \includegraphics[width=.6\linewidth]{./figures/polyfit_procedure_face.png}
+  \caption{Polynomial fit for VCA Transplants}
+  \label{fig:boxp_proc}
+\end{figure}
+
+
+\pagebreak
+
+\section{Tables}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{llrrrr}
+    \toprule
+    &  & $\hat\beta_1$ & $\hat\sigma_{\hat\beta_1}$ & $p$ & $R^2$ \\
+    Clustertype & Group &  &  &  &  \\
+    \midrule
+    \multirow[t]{2}{*}{Demographic} & Male Cohort & 0.011 & 0.175 & 0.951 & 0.001 \\
+    & Female Cohort & 0.443 & 0.345 & 0.247 & 0.215 \\
+    \cline{1-6}
+    \multirow[t]{4}{*}{Procedure} & Face Transplants & -0.152 & 0.158 & 0.389 & 0.189 \\
+    & Upper Limb Transplatations & 0.072 & 0.217 & 0.753 & 0.022 \\
+    & Abdominal Wall & -0.072 & 0.110 & 0.547 & 0.098 \\
+    & Uterus & -0.967 & 1.425 & 0.567 & 0.187 \\
+    \cline{1-6}
+    \multirow[t]{4}{*}{Ballanced} & Face-like subgroup & -0.048 & 0.133 & 0.738 & 0.031 \\
+    & Arm \& Hand group & -0.048 & 0.058 & 0.460 & 0.143 \\
+    & Uterus II & -0.967 & 1.361 & 0.551 & 0.201 \\
+    & Uterus I & 1.333 & 0.000 & 0.000 & 1.000 \\
+    \cline{1-6}
+    \multirow[t]{3}{*}{Medical} & Male ABO O & 0.000 & 0.055 & 1.000 & 0.000 \\
+    & ABO A & 0.212 & 0.219 & 0.388 & 0.190 \\
+    & Female ABO O & 0.105 & 0.258 & 0.711 & 0.053 \\
+    \cline{1-6}
+    \bottomrule
+  \end{tabular}
+  \caption{Forecasting results for all groups.}
+  \label{tab:linreg}
+\end{table}
+
+\newpage
+
+\section{Supplementary}
+\subsection{Recent Innovations in Face Reconstruction}
+
+Innovations in reconstructive surgery are of particular relevance for face VCA. Advances in bioengineered skin substitutes, stem-cell enriched scaffolds, and 3D bioprinting technologies have expanded the treatment options for burn victims and individuals with severe disfigurements. A recent review emphasizes progress in tissue engineering techniques that promote vascularization and integration of transplanted skin, which are crucial for long-term graft survival \cite{Chogan2022}. Moreover, novel therapeutic devices such as spray-on skin (ReCell) demonstrate how autologous donor material can be leveraged to accelerate healing and improve cosmetic outcomes for patients with extensive burns. These developments illustrate that while face VCA remains an established option, it is increasingly complemented by a rich ecosystem of regenerative and reconstructive techniques that broaden the therapeutic landscape.
+
+\newpage

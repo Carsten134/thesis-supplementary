@@ -1,0 +1,66 @@
+\section{Power and Size Simulations}
+\paragraph{Size Simulations} After implementation, the speed of convergence for this teststatistic is quite astonishing. Figure \ref{fig:norm_comparison} compares two Monte Carlo Simulations done on the new test for a sample size of $3\times 3$ and $5\times 5$ with $N=5000$ resamples. When moving from a $3\times 3$ lattice to a $5\times 5$ i.e. moving from an effective sample size of 2 to 8 (becaue duplicate values are left out as well as frequency pairs containing 0 and Nyquist), we instantly get a normal looking distribution from the Monte Carlo simulations. Approximated size jumps from 0 in the uniform distribution to $\approx 5.2\%$. Not only is the test holding it's size, it is instantly jumping to it's asymptotic distribution for a single digit effective samplesize. 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/norm_3x3.png}
+        \caption{Distribution for $3\times3$ samples}
+        \label{fig:norm3x3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/norm_5x5.png}
+        \caption{Distribution for $5\times5$ samples}
+        \label{fig:norm5x5}
+    \end{subfigure}
+    \caption{Comparison of test statistic distributions for different sample sizes.}
+    \label{fig:norm_comparison}
+\end{figure}
+
+Furthermore the test is extremely computationally efficient, doing the whole Monte Carlo Simulation without any optimization attempts within 1.5s.
+
+\paragraph{Power Simulations}
+The powersimulations show that only looking at certain parts of the periodogram comes at a price. Figures \ref{fig:pow_comparison1} and \ref{fig:pow_comparison2} compare the estimated powerfunctions between $PT_3$ and $\varphi_n^*$. It becomes very apparent that $\varphi_n^*$ outperforms $PT_3$ at every grid size under the proposed alternatives.
+
+These results may challange the way we look at randomization, not as a device to merely hold the size under $H_0$ but also increase efficiency under the alternative.
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/power_phi_n_star.png}
+        \caption{$\varphi_n^*$ for different grid sizes.}
+        \label{fig:norm3x3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/power_phoenix.png}
+        \caption{$PT_3$ for different grid sizes.}
+        \label{fig:norm5x5}
+    \end{subfigure}
+    \caption{Comparison of test statistic power for MA blur alternative.}
+    \label{fig:pow_comparison1}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/power_phi_n_star_ar.png}
+        \caption{$\varphi_n^*$ for different grid sizes.}
+        \label{fig:norm3x3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./figures/powe_phoenix_ar.png}
+        \caption{$PT_3$ for different grid sizes.}
+        \label{fig:norm5x5}
+    \end{subfigure}
+    \caption{Comparison of test statistic power for $AR(1)$ rotation alternative.}
+    \label{fig:pow_comparison2}
+\end{figure}

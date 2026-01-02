@@ -1,0 +1,71 @@
+\section{The Test}
+Given two stationary random fields $\{X_s |s\in \mathbb Z^2\}$ and $\{Y_s |s\in \mathbb Z^2\}$ with:
+\[
+Y_s,X_s: (\Omega,\mathcal A, P)\to \mathbb R
+\]
+We want to test whether:
+\begin{align*}
+H_0&: f_X(\vec\omega) = f_Y(\vec\omega) = f(\vec\omega)\\
+H_1&: f_X(\vec\omega) \neq f_Y(\vec\omega)\quad \forall\vec\omega\in A|\lambda(A) >0 
+\end{align*}
+where $\vec\omega\in [-\pi,\pi]^2$ 
+\subsection{Formalization}
+This teststatistic leans on the well known fact that:
+\[
+\frac{I(\vec\omega_{kl})}{f(\vec\omega_{kl})}\overset d\longrightarrow \text{Exp}(1) \quad n_x,n_y\to\infty
+\]
+Where as $n_x,n_y$ are the width and height of the 2D-lattice and $\vec\omega_{kl}$ is a pair of Fouririer frequencies along these axes.
+
+\cite{scacciaTestingAxialSymmetry2005} now define $G_s$, which is used to compare $I(\omega_k, \omega_l)$ with $I(\omega_k, -\omega_l)$. In our case, we use it to compare $I_X(\omega_k,\omega_l)$ with $I_Y(\omega_k, \omega_l)$:
+\begin{align*}
+G_s(\vec\omega_{kl}) &= \frac{\frac{I_X(\vec\omega_{kl}) - I_Y(\vec\omega_{kl})}{f(\vec\omega_{kl})}}{\frac{I_X(\vec\omega_{kl}) + I_Y(\vec\omega_{kl})}{f(\vec\omega_{kl})}}\\
+&=\frac{I_X(\vec\omega_{kl}) - I_Y(\vec\omega_{kl})}{I_X(\vec\omega_{kl}) + I_Y(\vec\omega_{kl})} \sim_{H_0}\mathcal U(-1,1)
+\end{align*}
+Leaving out duplicate values (because they perfectly correlate, caused by the symmetry property of the periodogram) and frequencies unequal to $0$ and $\pi$ (because they do not converge to an exponetial distribution). Note how we divide both the numerator and denominator by $f(\vec\omega)$. Under $H_0$, $G_s$ becomes self normalizing, meaning the values are scaled by the value of the true spectral density. Asymptotically this is just a transformation of exponentially distributed random variables without any unknown rates. Now aggregating and normalizing should yield at least in the asymptotic sense a Z-statstic:
+\begin{align*}
+PT_3 &:= \sqrt{n_x\, n_y} \frac{\overline{|G_s|}- \mathbb E_{H_0}(|G_s|)}{\sqrt{Var_{H_0}(|G_s|)}}\\
+&=\sqrt{n_x\, n_y} \sqrt{12}(\overline{|G_s|}-1/2)\underset{clt}{\longrightarrow}\mathcal N(0,1)  \quad \text{as }n_x,n_y\to\infty    
+\end{align*}
+
+Where $\overline{|G_s|}$ is the average of all $G_s$.
+\subsection{Consistency: Proof Sketch}
+In the event, that $H_1$ is true, $|G_s|$ will have an expectation strictly larger than $1/2$:
+
+\begin{align*}
+\mathbb{E}(|G_s|)
+&= \mathbb{E}\!\left( \left| \frac{I_X - I_Y}{I_X + I_Y} \right| \right) \\[6pt]
+&= \mathbb{E}\!\left( \left| \frac{aU - bV}{aU + bV} \right| \right),
+\quad U,V \stackrel{\text{i.i.d.}}{\sim} \mathrm{Exp}(1),\; a=f_X,\; b=f_Y \\[6pt]
+&= \int_0^1 |2t-1|\,
+     \frac{ab}{\big(tb+(1-t)a\big)^2}\,dt \\[6pt]
+&= 1 + \frac{2r}{(r-1)^2}
+       \log\!\left(\frac{4r}{(1+r)^2}\right),
+       \quad r = \frac{a}{b} \\[6pt]
+&= \frac{1}{2} + \delta(r),
+       \quad \delta(r)
+       = \frac{2r}{(r-1)^2}
+         \log\!\left(\frac{4r}{(1+r)^2}\right) + \frac{1}{2} - 1
+         > 0 \text{ for } r \neq 1.
+\end{align*}
+We can then partition the average $\overline{|G_s|}$ into parts that violate the null hypothesis ($B:= \{\vec\omega_{kl}\in A\}$) and parts that don't. For set $B$ we choose $r$ to be a constant, sucht that $r = \min_{\vec\omega_{kl}\in B} r(\vec\omega_{kl})$.:
+\[
+\overline{|G_s|} = \frac 1{n-\#B} \sum_{\vec\omega_{kl} \notin B}|G_s(\vec\omega_{kl})| + \frac 1{\#B} \sum_{\vec\omega_{kl} \in B}|G_s(\vec\omega_{kl})|
+\]
+$A$ being positively measured, will ensure, that $\#B\to \infty$ as $n_x,n_y\to\infty$. And asymptotic independence will ensure, that we can apply LLN, such that: 
+\begin{align*}
+    \frac 1{n-\#B} \sum_{\vec\omega_{kl} \notin B}|G_s(\vec\omega_{kl})| &\overset  p\longrightarrow 1/2\\
+    \frac 1{\#B} \sum_{\vec\omega_{kl} \in B}|G_s(\vec\omega_{kl})| &\overset p\longrightarrow 1/2 + \delta(r)
+\end{align*}
+Then following Slutsky: 
+\[
+\overline{|G_s|} \overset p \longrightarrow 1/2 +  \delta(r)
+\]
+Implying that:
+\[
+PT_3 = \mathcal O_p(1) + \sqrt{n_x \, n_y} \sqrt {12} \delta(r) \overset p \longrightarrow \infty
+\]
+Proving that: 
+\[
+P(|PT_3| > z_{1-\alpha/2}) \to 1 \quad n_x,n_y\to \infty 
+\]
+

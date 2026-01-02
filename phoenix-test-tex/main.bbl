@@ -1,0 +1,196 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{eichlerTestingNonparametricSemiparametric2008}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9ace3ad478f68ba1c3c3c9731bffa52e}{%
+           family={Eichler},
+           familyi={E\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{fullhash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{fullhashraw}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{bibnamehash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{authorbibnamehash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{authornamehash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{authorfullhash}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \strng{authorfullhashraw}{9ace3ad478f68ba1c3c3c9731bffa52e}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We propose a general nonparametric approach for testing hypotheses about the spectral density matrix of multivariate stationary time series based on estimating the integrated deviation from the null hypothesis. This approach covers many important examples from interrelation analysis such as tests for noncorrelation or partial noncorrelation. Based on a central limit theorem for integrated quadratic functionals of the spectral matrix, we derive asymptotic normality of a suitably standardized version of the test statistic under the null hypothesis and under fixed as well as under sequences of local alternatives. The results are extended to cover also parametric and semiparametric hypotheses about spectral density matrices, which includes as examples goodness-of-fit tests and tests for separability.}
+      \field{day}{1}
+      \field{issn}{0047-259X}
+      \field{journaltitle}{Journal of Multivariate Analysis}
+      \field{month}{5}
+      \field{number}{5}
+      \field{shortjournal}{Journal of Multivariate Analysis}
+      \field{title}{Testing nonparametric and semiparametric hypotheses in vector stationary processes}
+      \field{urlday}{19}
+      \field{urlmonth}{8}
+      \field{urlyear}{2025}
+      \field{volume}{99}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{968\bibrangedash 1009}
+      \range{pages}{42}
+      \verb{doi}
+      \verb 10.1016/j.jmva.2007.06.003
+      \endverb
+      \verb{file}
+      \verb ScienceDirect Full Text PDF:C\:\\Users\\WordPress\\Zotero\\storage\\X2LWLL9U\\Eichler - 2008 - Testing nonparametric and semiparametric hypotheses in vector stationary processes.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Users\\WordPress\\Zotero\\storage\\A3WWUJNA\\S0047259X0700084X.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0047259X0700084X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0047259X0700084X
+      \endverb
+      \keyw{Frequency domain approach,Goodness-of-fit test,Nonparametric and semiparametric tests,Partial noncorrelation,Spectral density matrix}
+    \endentry
+    \entry{jentschTestingEqualitySpectral2015}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d96b807828396d05fa6e06277ca21be1}{%
+           family={Jentsch},
+           familyi={J\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=114eaa37c73557d8284b82040cebba84}{%
+           family={Pauly},
+           familyi={P\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{fullhash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{fullhashraw}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{bibnamehash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{authorbibnamehash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{authornamehash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{authorfullhash}{36d0bc1911d7b3c354433a4dc17357c6}
+      \strng{authorfullhashraw}{36d0bc1911d7b3c354433a4dc17357c6}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{issn}{1350-7265}
+      \field{journaltitle}{Bernoulli}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{2}
+      \field{shortjournal}{Bernoulli}
+      \field{title}{Testing equality of spectral densities using randomization techniques}
+      \field{urlday}{18}
+      \field{urlmonth}{8}
+      \field{urlyear}{2025}
+      \field{volume}{21}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3150/13-BEJ584
+      \endverb
+      \verb{file}
+      \verb PDF:C\:\\Users\\WordPress\\Zotero\\storage\\NY2UKUKE\\Jentsch und Pauly - 2015 - Testing equality of spectral densities using randomization techniques.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://projecteuclid.org/journals/bernoulli/volume-21/issue-2/Testing-equality-of-spectral-densities-using-randomization-techniques/10.3150/13-BEJ584.full
+      \endverb
+      \verb{url}
+      \verb https://projecteuclid.org/journals/bernoulli/volume-21/issue-2/Testing-equality-of-spectral-densities-using-randomization-techniques/10.3150/13-BEJ584.full
+      \endverb
+    \endentry
+    \entry{scacciaTestingAxialSymmetry2005}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f66c1841a6f708cd55774441b5efdb9b}{%
+           family={Scaccia},
+           familyi={S\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=69c0ebbb13b7920dc941201c0b12ced8}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={R.\bibnamedelimi J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{fullhash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{fullhashraw}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{bibnamehash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{authorbibnamehash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{authornamehash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{authorfullhash}{ad11bca45e4a559792e9a264c0405a4a}
+      \strng{authorfullhashraw}{ad11bca45e4a559792e9a264c0405a4a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Data collected on a rectangular lattice are common in many areas, and models used often make simplifying assumptions. These assumptions include axial symmetry in the spatial process and separability. Some different methods for testing axial symmetry and separability are considered. Using the sample periodogram is shown to provide some simple satisfactory tests of both hypotheses, but tests for separability given axial symmetry have low power for small lattices.}
+      \field{day}{1}
+      \field{issn}{0378-3758}
+      \field{journaltitle}{Journal of Statistical Planning and Inference}
+      \field{month}{4}
+      \field{number}{1}
+      \field{shortjournal}{Journal of Statistical Planning and Inference}
+      \field{title}{Testing axial symmetry and separability of lattice processes}
+      \field{urlday}{2}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{volume}{131}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{19\bibrangedash 39}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/j.jspi.2004.01.003
+      \endverb
+      \verb{file}
+      \verb ScienceDirect Full Text PDF:C\:\\Users\\WordPress\\Zotero\\storage\\B2H4DVGB\\Scaccia und Martin - 2005 - Testing axial symmetry and separability of lattice processes.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Users\\WordPress\\Zotero\\storage\\4HUTBHP9\\S037837580400062X.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S037837580400062X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S037837580400062X
+      \endverb
+      \keyw{Autoregressive process,Axial symmetry,Doubly-geometric process,Lattice process,Separability,Spatial process}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

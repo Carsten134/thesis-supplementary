@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{afterpage}
+\usepackage{fix-cm}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{sectsty}
+\usepackage{booktabs}
+\usepackage[style=authoryear]{biblatex}
+\usepackage{multirow}
+% use subfigures
+\usepackage{subcaption} % add this to your preamble
+
+\definecolor{UoDBlue}{RGB}{67, 101, 226}
+\definecolor{UoDDarkBlue}{RGB}{61, 88, 151}
+\definecolor{UoDLightBlue}{RGB}{209,226,242}
+\definecolor{TuDLightGreen}{RGB}{110,200,41}
+\definecolor{TuDDarkGreen}{RGB}{92,140,4}
+
+\bibliography{literature}
+\usepackage{fontspec}
+\setromanfont{BaxterSans}[
+    Path=./Baxter/,
+    Extension=.otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic
+    ]
+    
+\sectionfont{\color{TuDDarkGreen}}
+\subsectionfont{\color{TuDDarkGreen}}
+\begin{document}
+
+
+
+\input{title}
+\thispagestyle{empty}
+\tableofcontents
+\listoffigures
+
+% \newpage
+
+
+% \input{sections/letter_of_transparency.tex}
+\newpage
+\input{sections/introduction.tex}
+\input{sections/methods.tex}
+\input{sections/results.tex}
+\newpage
+
+\printbibliography
+\end{document}
