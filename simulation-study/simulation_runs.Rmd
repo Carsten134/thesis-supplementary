@@ -1,0 +1,500 @@
+---
+title: "Simulations"
+author: "Carsten Stahl"
+date: "2025-11-18"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyMC)
+library(rspsp)
+library(tidyverse)
+```
+
+# Testing Equality
+## Empirical Size
+
+### Bandwidth on Decision: $\varphi_n^*$
+We want to inspect how the bandwidth affects the decision of the test:
+
+```{r bandwidth-h0}
+## Simulation-Config ################
+MC_N <- 1000
+# approximating for different bandwidths
+bandwidth <- 1:25/50
+param_list_null <- list(h=bandwidth)
+# Lattice size
+n <- 20
+
+## Nulls ############################
+band_null_ma <- function(h){
+  x <- gridMA(n, n, MA_coef_all(.7))
+  y <- gridMA(n, n, MA_coef_all(.7))
+  
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+band_null_ma_row <- function(h) {
+  x <- gridMA(n, n, MA_coef_row(.7))
+  y <- gridMA(n, n, MA_coef_row(.7))
+  
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+band_null_ar <- function(h){
+  x <- gridAR(n, n, .8, .08, .1)
+  y <- gridAR(n, n, .8, .08, .1)
+  
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+## Running MCs ####################################
+mc_band_ma <- future_mc(band_null_ma,
+                        param_list=param_list_null,
+                        repetitions=MC_N)
+mc_band_ma_row <- future_mc(band_null_ma,
+                        param_list=param_list_null,
+                        repetitions=MC_N)
+
+mc_band_ar <- future_mc(band_null_ar,
+                        param_list=param_list_null,
+                        repetitions=MC_N)
+
+```
+
+Next we want to briefly simulate with the same behavior with correlation
+```{r null-cor}
+band_null_ma_corr <- function(h) {
+  K0 <- MA_coef_all(.35)
+  K0_off <- K0*.5
+  sample <- mvgridMA(n,n, K0, K0, K0_off, K0_off, .3)
+  
+  x <- sample$X1
+  y <- sample$X2
+  
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_band_ma_corr <- future_mc(band_null_ma_corr,
+                             param_list=param_list_null,
+                             repetitions=MC_N)
+
+# save result
+write.csv(mc_band_ma_corr$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\size\with_symmetry\mc_band_ma_corr.csv}")
+```
+
+
+Storing results:
+```{r storing-res-h0-eq}
+write.csv(mc_band_ar$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\mc_band_ar.csv}")
+
+write.csv(mc_band_ma$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\mc_band_ma.csv}")
+
+write.csv(mc_band_ma_row$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\mc_band_ma_row.csv}")
+
+
+```
+
+## H1: Approximating Power
+
+### Blur Alternative
+This is a testrun for powerestimations using `tidyMC`.
+
+```{r blur-alternative}
+# Config for Alternative
+MC_N <- 1000
+param_list_alt <- list(delta=1:7/10,
+                   n=c(15, 20, 25, 35))
+
+
+blur_alt <- function(delta, n) {
+  K0 <- MA_coef_all(.7)
+  K1 <- MA_coef_all(delta, 7)
+  K1[3:5, 3:5] <- K0
+  
+  x <- gridMA(n, n, K0)
+  y <- gridMA(n, n, K1)
+  
+  h <- (n*n)^(-.3333)
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_blur_alt <- future_mc(blur_alt,
+                     MC_N,
+                     param_list=param_list_alt)
+# save result
+write.csv(mc_blur_alt$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_blur_alt_norm.csv}")
+```
+
+
+```{r}
+row_col_alt <- function(delta, n) {
+  K0 <- MA_coef_row(.7)
+  K1 <- MA_coef_row(.7 - delta)
+  K1[1, 2] <- delta
+  K1[3, 2] <- delta
+  
+  x <- gridMA(n, n, K0)
+  y <- gridMA(n, n, K1)
+  
+  h <- (n*n)^(-.3333)
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_row_col_alt <- future_mc(row_col_alt,
+                            MC_N,
+                            param_list_alt)
+# save result
+write.csv(mc_row_col_alt$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_row_col_alt_h.csv}")
+```
+
+
+### Rotation Alternative
+```{r}
+rot_alt <- function(delta, n) {
+  x <- gridAR(n, n, .8, .05, .05)
+  y <- gridAR(n, n, .8-delta, .05, .05 + delta)
+  
+  h <- (n*n)^(-.3333)
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_rot_alt <- future_mc(rot_alt,
+                     MC_N,
+                     param_list=param_list_alt)
+
+# save result
+write.csv(mc_rot_alt$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_rot_alt_h.csv}")
+```
+
+### Correlation Blur-Alternative
+```{r}
+blur_alt_corr <- function(delta, n) {
+  K0 <- MA_coef_all(.7)
+  K1 <- MA_coef_all(delta, 7)
+  
+  K1[3:5, 3:5] <- K0
+  
+  K0_off <- K0*.5
+  K1_off <- K1*.5
+  
+  sample <- mvgridMA(n,n, K0, K1, K0_off, K1_off, .3)
+  
+  x <- sample$X1
+  y <- sample$X2
+  
+  h <- (n*n)^(-.3333)
+  res <- test.spectral(x, y, 200, .05, h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_blur_cor_alt <- future_mc(blur_alt_corr,
+                     MC_N,
+                     param_list=param_list_alt)
+
+# save result
+write.csv(mc_blur_cor_alt$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_blur_cor_alt_h.csv}")
+```
+
+
+## Isotropy
+
+
+### Bandwidth on Decision: $\varphi_^{iso*}$
+Same again with isotropy.
+```{r h0_bandwidth_iso}
+bandwidth <- 1:25/50
+param_list_null <- list(h=bandwidth)
+
+null_bandwidth_ma_iso <- function(h) {
+  n <- 25
+  x <- gridMA(n, n, MA_coef_all(.5))
+  res <- test.spectral(x,NULL,200,.05, "isotropy", h, h)
+  return(list(decision=res$decision))
+}
+
+null_bandwidth_ma_iso_mc <- future_mc(null_bandwidth_ma_iso,
+                                      param_list=param_list_null,
+                                      repetitions=MC_N)
+
+```
+
+Loading data into plotting project:
+```{r}
+write.csv(null_bandwidth_ma_iso_mc$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\size\with_symmetry\mc_band_ma_iso.csv}")
+```
+
+
+
+### Moving from Isotropic MA to non isotropic
+```{r}
+alt_iso_cross_to_row <- function(delta, n) {
+  K1 <- matrix(0, ncol=3, nrow=3)
+  K1[2,] = .7
+  K1[,2] = .7-delta
+  K1[2,2] = 1
+  
+  x <- gridMA(n, n, K1)
+  res <- test.spectral(x, NULL, 200, .05, "isotropy")
+  return(list(decision=res$decision))
+}
+
+mc_iso_alt <- future_mc(alt_iso_cross_to_row,
+                        MC_N,
+                        param_list=param_list_alt)
+
+# save result
+write.csv(mc_iso_alt$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_iso_alt.csv}")
+```
+
+## Weak Stationarity Heuristic
+
+### Size
+```{r}
+n <- 20
+bandwidth <- 1:25/50
+param_list_null <- list(h=bandwidth)
+
+mc_h0_band <- function(h) {
+  x <- gridMA(n, n, MA_coef_all(.7))
+  res = test.spectral(x, NULL, 200, .05, hypothesis = "stationary", h1=h, h2=h)
+  list(decision=res$decision)
+}
+
+mc_null_stat <- future_mc(mc_h0_band,
+                          1000,
+                          param_list = param_list_null)
+
+write.csv(mc_null_stat$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\size\with_symmetry\mc_band_stat_MA.csv}")
+```
+
+```{r}
+
+ar_h0 <- function(h) {
+  x <- gridAR(n, n, .8, .05, .05)
+ 
+  res <- test.spectral(x, NULL, 200, .05, hypothesis = "stationary", h1=h, h2=h)
+  return(list(decision=res$decision))
+}
+
+mc_ar_stationary <- future_mc(ar_h0,
+                              1000,
+                              param_list_null)
+
+write_csv(mc_ar_stationary$output, r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\size\with_symmetry\mc_band_stat_AR.csv}")
+
+```
+
+
+### power
+```{r}
+param_list_alt <- list(delta=1:7/10,
+                   n=c(15, 20, 25, 35))
+
+
+alt_stationary <- function(delta, n) {
+  # introducing second order non-stationarity
+  mul <- matrix(rep(seq(1, 3 * delta + 1, length.out = n), times = n),
+                ncol = n) +
+      matrix(rep(seq(1, 3 * delta + 1, length.out = n), times = n), byrow = TRUE,
+             ncol = n)
+  
+  x <- gridMA(n, n, MA_coef_all(.7))
+  h <- n^(-.2)
+  res <- test.spectral(x*mul, NULL, 200, .05, hypothesis="stationary", h1=h, h2=h)
+  
+  list(decision=res$decision)
+}
+
+mc_null_stat <- future_mc(alt_stationary,
+                          1000,
+                          param_list = param_list_alt)
+
+write.csv(mc_null_stat$output,r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_stationarity_alt.csv}")
+```
+
+
+## Periodogram Test
+
+### $H_0$
+
+First we assess the general distribution: 
+````{r}
+null_full_ma_periodo <- function(n) {
+  K0 <- MA_coef_all(.7)
+  
+  x <- gridMA(n, n, K0)
+  y <- gridMA(n, n, K0)
+  
+  res <- pt3(x, y, .05)
+  return(list(value=res$test_value,
+              decision=res$decision))
+}
+
+mc_iso_alt <- future_mc(null_full_ma_periodo,
+                        MC_N,
+                        param_list=list(n=c(3, 5)))
+
+
+
+hist(mc_iso_alt$output[mc_iso_alt$output$n == 3,]$value)
+hist(mc_iso_alt$output[mc_iso_alt$output$n == 5,]$value)
+
+cat("approximated size for n=3:", sum(mc_iso_alt$output[mc_iso_alt$output$n == 3,]$decision) / MC_N, "\n")
+cat("approximated size for n=5:", sum(mc_iso_alt$output[mc_iso_alt$output$n == 5,]$decision) / MC_N, "\n")
+```
+Next we consider all scenarios done for the bandwidth study for different sample sizes:
+```{r}
+## Nulls ############################
+per_null_mc <- function(n, alpha){
+  x <- gridMA(n, n, MA_coef_all(.7))
+  y <- gridMA(n, n, MA_coef_all(.7))
+  
+  resma <- pt3(x, y, alpha)
+  
+  x <- gridMA(n, n, MA_coef_all(.7), distribution="uniform")
+  y <- gridMA(n, n, MA_coef_all(.7), distribution="uniform")
+  
+  resma_unif <- pt3(x, y, alpha)
+  
+  x <- gridMA(n, n, MA_coef_all(.7), distribution="cauchy")
+  y <- gridMA(n, n, MA_coef_all(.7), distribution="cauchy")
+  
+  resma_cauchy <- pt3(x, y, alpha)
+  
+  x <- gridMA(n, n, MA_coef_all(.7), distribution="chisq")
+  y <- gridMA(n, n, MA_coef_all(.7), distribution="chisq")
+  
+  resma_chisq <- pt3(x, y, alpha)
+  
+  x <- gridMA(n, n, MA_coef_row(.7))
+  y <- gridMA(n, n, MA_coef_row(.7))
+  
+  resma_row <- pt3(x, y, alpha)
+  
+  x <- gridAR(n, n, .8, .08, .1)
+  y <- gridAR(n, n, .8, .08, .1)
+  
+  resar <- pt3(x, y, alpha)
+  return(list(MAfull=resma$decision,
+              MArow=resma_row$decision,
+              QP=resar$decision,
+              MAunif=resma_unif$decision,
+              MAchisq=resma_chisq$decision,
+              MAcauchy=resma_cauchy$decision))
+}
+
+## Running MCs ####################################
+MC_N <- 2000
+param_list_null <- list(n=c(5, 7, 11, 15),
+                        alpha=c(.1, .05, .01))
+
+mc_per_size <- future_mc(per_null_mc,
+                        param_list=param_list_null,
+                        repetitions=MC_N)
+
+tidy_mc_latex(summary(mc_per_size),
+              kable_options = list(caption="Rejection rates under $H_0$ and QP process")) %>% cat()
+
+```
+
+
+
+### Power approximations
+```{r}
+# Config for Alternative
+MC_N <- 1000
+param_list_alt <- list(delta=1:7/10,
+                   n=c(15, 20, 25, 35))
+
+
+blur_alt <- function(delta, n) {
+  K0 <- MA_coef_all(.7)
+  K1 <- MA_coef_all(delta, 7)
+  K1[3:5, 3:5] <- K0
+  
+  x <- gridMA(n, n, K0)
+  y <- gridMA(n, n, K1)
+  
+  res <- pt3(x, y, .05)
+  return(list(decision=res$decision))
+}
+
+mc_per_blur_alt <- future_mc(blur_alt,
+                     MC_N,
+                     param_list=param_list_alt)
+
+rot_alt <- function(delta, n) {
+  x <- gridAR(n, n, .8, .05, .05)
+  y <- gridAR(n, n, .8-delta, .05, .05 + delta)
+  
+  res <- pt3(x, y, .05)
+  return(list(decision=res$decision))
+}
+
+mc_per_rot_alt <- future_mc(rot_alt,
+                     MC_N,
+                     param_list=param_list_alt)
+
+
+row_col_alt <- function(delta, n) {
+  K0 <- MA_coef_row(.7 - delta)
+  K1 <- MA_coef_row(.7 - delta)
+  K1[1, 2] <- delta
+  K1[3, 2] <- delta
+  
+  x <- gridMA(n, n, K0)
+  y <- gridMA(n, n, K1)
+  
+  res <- pt3(x, y, .05)
+  return(list(decision=res$decision))
+}
+
+mc_per_row_col_alt <- future_mc(row_col_alt,
+                            MC_N,
+                            param_list_alt)
+
+blur_alt_corr <- function(delta, n) {
+  K0 <- MA_coef_all(.7)
+  K1 <- MA_coef_all(delta, 7)
+  
+  K1[3:5, 3:5] <- K0
+  
+  K0_off <- K0*.5
+  K1_off <- K1*.5
+  
+  sample <- mvgridMA(n,n, K0, K1, K0_off, K1_off, .3)
+  
+  x <- sample$X1
+  y <- sample$X2
+  
+  res <- test.spectral(x, y, 200, .05, h1=.14, h2=.14)
+  return(list(decision=res$decision))
+}
+
+mc_per_blur_cor_alt <- future_mc(blur_alt_corr,
+                     MC_N,
+                     param_list=param_list_alt)
+
+
+
+write.csv(mc_per_blur_alt$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_per_band_ma_row.csv}")
+
+write.csv(mc_per_rot_alt$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_per_rot_alt.csv}")
+
+write.csv(mc_per_row_col_alt$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_per_row_col_alt.csv}")
+
+write.csv(mc_per_blur_cor_alt$output,file=r"{D:\Daten\DataScienceMaster\Semester 4\Masterarbeit\plotting_simulation_results\sim_results\power\mc_per_blur_cor_alt.csv}")
+
+```
+
+
+
